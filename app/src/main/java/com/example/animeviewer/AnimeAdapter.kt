@@ -4,37 +4,43 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.animeviewer.databinding.AnimeListItemBinding
-import com.example.animeviewer.databinding.AnimeRowItemBinding
-import com.example.animeviewer.model.NewsArticle
+import com.example.animeviewer.model.AnimeItem
 
 class AnimeAdapter : RecyclerView.Adapter<AnimeAdapter.AnimeViewHolder>() {
 
-    private var items: List<NewsArticle> = ArrayList()
-
+    private var animeList: ArrayList<AnimeItem>? = null
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): AnimeViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.anime_list_item,parent,false)
-        return  AnimeViewHolder(view)
+        val animeListItemBinding = DataBindingUtil.inflate<AnimeListItemBinding>(
+            LayoutInflater.from(parent.context),
+            R.layout.anime_list_item, parent, false
+        )
+        return  AnimeViewHolder(animeListItemBinding)
 
     }
 
     override fun onBindViewHolder(holder: AnimeViewHolder, position: Int) {
-        holder.bind(items[position])
+        val currentItem = animeList!![position]
+        holder.binding.animeItemModel = currentItem
     }
 
-    fun swapItems(items : List<NewsArticle>) {
-        this.items = items
+    fun setAnimeList(animeList :ArrayList<AnimeItem>) {
+        this.animeList = animeList;
         notifyDataSetChanged()
     }
-    override fun getItemCount() = items.size
 
-    class AnimeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val binding = AnimeListItemBinding.bind(itemView)
-        fun bind(animeItem: NewsArticle) = with(itemView) {
-            Log.d("MYTAG",animeItem.title.toString())
-           binding.animeTitle.text = animeItem.title
+    override fun getItemCount() : Int {
+         return if (animeList != null) {
+            animeList!!.size
+        } else {
+            0
         }
     }
+
+
+    inner class AnimeViewHolder(var binding: AnimeListItemBinding) :
+        RecyclerView.ViewHolder(binding.root)
     }

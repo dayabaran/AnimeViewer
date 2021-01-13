@@ -1,20 +1,19 @@
 package com.example.animeviewer
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.databinding.DataBindingUtil
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
-import com.example.animeviewer.api.RetrofitClient
 import com.example.animeviewer.databinding.ActivityMainBinding
+import com.example.animeviewer.model.AnimeItem
 import com.example.animeviewer.viewmodel.AnimeViewModel
+import java.util.*
 
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    private lateinit var recyclerView:RecyclerView
+    private var adapter: AnimeAdapter? = null
 
     private val animeViewModel by lazy { ViewModelProvider(this).get(AnimeViewModel::class.java) }
 
@@ -24,15 +23,20 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         //initialize the adapter
-        val adapter = AnimeAdapter()
+        adapter = AnimeAdapter()
         binding.animeList.layoutManager = LinearLayoutManager(this)
         binding.animeList.adapter = adapter
 
-        adapter.swapItems(animeViewModel.getAnimeItems())
+        fetchAllAnime()
 
+    }
 
-        RetrofitClient.getAnimeItems("naruto")
-
-       // animeViewModel.getAnimeItems().observe(this, Observer { it?.let { adapter.swapItems(it) } })
+    private fun fetchAllAnime() {
+        ///get the list of dev from api response
+        animeViewModel.allAnimeList.observe(this,
+            Observer<List<Any>>{ animeList ->
+                ///if any thing changes the update the UI
+                adapter?.setAnimeList(animeList as ArrayList<AnimeItem>)
+            })
     }
 }

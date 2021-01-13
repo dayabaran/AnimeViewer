@@ -1,7 +1,11 @@
 package com.example.animeviewer.model
 
+import android.util.Log
+import android.widget.ImageView
+import androidx.databinding.BindingAdapter
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
+import com.squareup.picasso.Picasso
 
 class AnimeItem {
     @SerializedName("mal_id")
@@ -55,4 +59,18 @@ class AnimeItem {
     @SerializedName("rated")
     @Expose
     var rated: String? = null
+
+    companion object  {
+
+
+        @JvmStatic
+        @BindingAdapter("image_url")
+        fun loadImage(imageView: ImageView, imageURL: String) {
+
+            Log.e("imgeurl",imageURL)
+            val picasso = Picasso.get()
+            picasso.load(imageURL).into(imageView)
+        }
+
+    }
 }

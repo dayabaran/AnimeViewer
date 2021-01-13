@@ -14,22 +14,23 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object RetrofitClient {
 
-    private const val ANIME = "naruto"
     private var retrofit: Retrofit? = null
 
-    private val service: AnimeApi
     private const val BASE_URL = "https://api.jikan.moe/v3/"
+     val service: AnimeApi
+        get() {
+            val builder = OkHttpClient.Builder()
+            val okHttpClient = builder.build()
+            if (retrofit == null) {
+                retrofit = Retrofit.Builder()
+                    .baseUrl(BASE_URL)
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .client(okHttpClient)
+                    .build()
+            }
 
-    init {
-        val builder = OkHttpClient.Builder()
-        val okHttpClient = builder.build()
-        val retrofit = Retrofit.Builder()
-            .baseUrl(BASE_URL)
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okHttpClient)
-            .build()
-        service = retrofit.create(AnimeApi::class.java)
-    }
+            return retrofit!!.create(AnimeApi::class.java!!)
+        }
 
     fun getAnimeItems(Anime :String) {
          service.getAnimeItems(Anime).enqueue(object : Callback<AnimeResponse> {

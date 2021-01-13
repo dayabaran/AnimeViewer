@@ -4,15 +4,14 @@
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <data>-->
+    <data>
 
-<!--        <variable-->
-<!--            name="animeItemModel"-->
-<!--            type="com.example.animeviewer.model.AnimeItemModel" />-->
+        <variable
+            name="animeItemModel"
+            type="com.example.animeviewer.model.AnimeItem" />
 
-<!--    </data>-->
+    </data>
     <!--                bind:image_url="@{animeItemModel.image_url}"-->
-    <!--                android:text="@{animeItemModel.title}"-->
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -44,6 +43,7 @@
                     android:layout_marginBottom="@dimen/_8sdp"
                     android:background="?attr/selectableItemBackgroundBorderless"
                     android:scaleType="fitXY"
+                    bind:image_url = "@{animeItemModel.imageUrl}"
                     bind:layout_constraintBottom_toBottomOf="parent"
                     bind:layout_constraintStart_toStartOf="parent"
                     bind:layout_constraintTop_toTopOf="parent" />
@@ -57,7 +57,7 @@
                     android:layout_marginTop="@dimen/_8sdp"
                     android:layout_marginEnd="@dimen/_8sdp"
                     android:padding="@dimen/_4sdp"
-                    android:text="Dummy Text"
+                    android:text="@{animeItemModel.title}"
                     android:textColor="@color/colorPrimary"
                     android:textSize="@dimen/_14ssp"
                     bind:layout_constraintEnd_toEndOf="parent"

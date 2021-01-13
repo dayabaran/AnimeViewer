@@ -1,14 +1,19 @@
 package com.example.animeviewer.viewmodel
 
+import android.app.Application
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import com.example.animeviewer.DummyDataProvider
 import com.example.animeviewer.model.AnimeItem
+import com.example.animeviewer.model.AnimeRespository
 
-class AnimeViewModel: ViewModel() {
+class AnimeViewModel(application: Application): AndroidViewModel(application) {
+    private val animeRespository: AnimeRespository
 
-    var animeList: MutableLiveData<List<AnimeItem>> = MutableLiveData()
+    val allAnimeList: MutableLiveData<List<AnimeItem>>
+        get() = animeRespository.getMutableLiveData()
 
-
-    fun getAnimeItems() = DummyDataProvider.getDummyAnime()
+    init {
+        animeRespository = AnimeRespository()
+    }
 }
