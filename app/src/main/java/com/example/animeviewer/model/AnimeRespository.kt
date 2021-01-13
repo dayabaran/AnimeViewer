@@ -26,7 +26,6 @@ class AnimeRespository {
             override fun onResponse(call: Call<AnimeResponse>, resp: Response<AnimeResponse>) {
                 mAnimeItemList = resp.body()?.animeItems as ArrayList<AnimeItem>
                 mutableLiveData.value = mAnimeItemList
-                Log.d("MYTAG", mAnimeItemList.size.toString())
             }
 
             override fun onFailure(call: Call<AnimeResponse>, t: Throwable) {

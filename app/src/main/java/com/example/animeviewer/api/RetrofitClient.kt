@@ -29,19 +29,4 @@ object RetrofitClient {
             return retrofit!!.create(AnimeApi::class.java!!)
         }
 
-    fun getAnimeItems(Anime :String) {
-         service.getAnimeItems(Anime).enqueue(object : Callback<AnimeResponse> {
-            override fun onResponse(call: Call<AnimeResponse>, response: Response<AnimeResponse>) {
-                Log.d("MYTAG", response.body().toString())
-            }
-
-            override fun onFailure(call: Call<AnimeResponse>, t: Throwable) {
-                Log.d("MYTAG", call.request().body.toString())
-            }
-
-        })
-
-    }
-
-
 }
