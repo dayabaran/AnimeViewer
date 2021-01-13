@@ -1,10 +1,7 @@
 package com.example.animeviewer.api
 
 import android.util.Log
-import com.example.animeviewer.AnimeResponse
-import com.example.animeviewer.viewmodel.AnimeViewModel
-import com.google.gson.JsonArray
-import com.google.gson.JsonObject
+import com.example.animeviewer.model.AnimeResponse
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback

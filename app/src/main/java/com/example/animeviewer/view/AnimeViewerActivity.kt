@@ -1,4 +1,4 @@
-package com.example.animeviewer
+package com.example.animeviewer.view
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -9,8 +9,9 @@ import com.example.animeviewer.databinding.ActivityMainBinding
 import com.example.animeviewer.model.AnimeItem
 import com.example.animeviewer.viewmodel.AnimeViewModel
 import java.util.*
+import kotlin.collections.ArrayList
 
-class MainActivity : AppCompatActivity() {
+class AnimeViewerActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private var adapter: AnimeAdapter? = null

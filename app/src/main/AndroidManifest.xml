@@ -9,7 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AnimeViewer">
-        <activity android:name=".MainActivity">
+        <activity android:name=".view.AnimeViewerActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

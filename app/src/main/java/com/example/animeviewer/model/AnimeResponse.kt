@@ -1,4 +1,4 @@
-package com.example.animeviewer
+package com.example.animeviewer.model
 
 import com.example.animeviewer.model.AnimeItem
 import com.google.gson.annotations.Expose

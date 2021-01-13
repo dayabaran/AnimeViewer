@@ -1,14 +1,8 @@
 package com.example.animeviewer.model
 
 import android.util.Log
-import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.example.animeviewer.AnimeResponse
 import com.example.animeviewer.api.RetrofitClient
-import com.example.animeviewer.viewmodel.AnimeViewModel
-import com.google.gson.GsonBuilder
-import com.google.gson.JsonArray
-import com.google.gson.JsonParser
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -44,8 +38,4 @@ class AnimeRespository {
         return mutableLiveData
     }
 
-    companion object {
-
-        private val TAG = "AnimeRepository"
-    }
 }
