@@ -25,5 +25,6 @@ class MainActivity : AppCompatActivity() {
         val adapter = AnimeAdapter()
         recyclerView.adapter = adapter
         recyclerView.layoutManager = LinearLayoutManager(this)
+        adapter.swapItems(animeViewModel.getAnimeItems())
     }
 }
