@@ -1,61 +1,58 @@
 package com.example.animeviewer.model
 
+import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
-import java.util.*
 
-data class AnimeItem(
-
+class AnimeItem {
     @SerializedName("mal_id")
-    var id:Int? = null,
+    @Expose
+    var malId: Int? = null
 
     @SerializedName("url")
-    var url:String? = null,
+    @Expose
+    var url: String? = null
 
     @SerializedName("image_url")
-    var image_url :String? = null,
+    @Expose
+    var imageUrl: String? = null
 
     @SerializedName("title")
-    var title: String? = null,
+    @Expose
+    var title: String? = null
 
     @SerializedName("airing")
-    var airing: Boolean? = null,
+    @Expose
+    var airing: Boolean? = null
 
-    @SerializedName("sysnopsis")
-    var synopsis : String? = null,
+    @SerializedName("synopsis")
+    @Expose
+    var synopsis: String? = null
 
     @SerializedName("type")
-    var type: String? = null,
+    @Expose
+    var type: String? = null
 
     @SerializedName("episodes")
-    var episodes: Int? = null,
+    @Expose
+    var episodes: Int? = null
 
     @SerializedName("score")
-    var score:Int? = null,
+    @Expose
+    var score: Float? = null
 
     @SerializedName("start_date")
-    var startDate:Date? = null,
+    @Expose
+    var startDate: String? = null
 
     @SerializedName("end_date")
-    var endDate:Date? = null,
+    @Expose
+    var endDate: String? = null
 
     @SerializedName("members")
-    var members:Int? = null,
+    @Expose
+    var members: Int? = null
 
     @SerializedName("rated")
-    var rated:String? = null
-
-
-//    companion object  {
-//
-//    @BindingAdapter("image_url")
-//    fun loadImage(imageView: ImageView, image_url: String) {
-//
-//        val picasso = Picasso.get()
-//        Log.e("imgeurl",image_url)
-//
-//        picasso.load(image_url)
-//            .into(imageView)
-//    }
-//
-//}
-)
+    @Expose
+    var rated: String? = null
+}
