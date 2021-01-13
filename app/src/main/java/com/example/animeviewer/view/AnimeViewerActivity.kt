@@ -55,13 +55,14 @@ class AnimeViewerActivity : AppCompatActivity() {
         return true
     }
 
-    private fun handleIntent(intent: Intent) {
+    private fun handleIntent(intent: Intent) : String {
 
         if (Intent.ACTION_SEARCH == intent.action) {
             val query = intent.getStringExtra(SearchManager.QUERY)
             //use the query to search your data somehow
-            Log.d("MYTAG", "handleIntent: $query")
+            return query.toString()
         }
+        return ""
     }
 
     private fun fetchAllAnime() {
